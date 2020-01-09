@@ -1,16 +1,20 @@
 <template>
   <div class="hello">
-    <h1>{{ $store.getters.memberInfo }}</h1>
+    <h1>{{ memberInfo }}</h1>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  computed:{
+      ...mapGetters(['memberInfo'])
   }
 }
 </script>
