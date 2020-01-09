@@ -12,6 +12,10 @@ export default {
             user:{
                 username:'',
                 pwd:''
+            },
+            userInfo:{
+                userStatus:2,
+                userLevel:1
             }
         }
     },
@@ -23,6 +27,7 @@ export default {
             }
             else {
                 this.$store.commit('login',this.user);
+                this.$store.commit('member',this.userInfo);
                 this.$router.push('./');
             }
         }

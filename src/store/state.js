@@ -1,4 +1,6 @@
 const state={
-    userInfo:''
+    userInfo:'',
+    userLevel:"",
+    userStatus:0
 }
 export default state;
