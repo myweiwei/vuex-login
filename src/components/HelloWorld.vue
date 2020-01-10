@@ -1,20 +1,39 @@
 <template>
   <div class="hello">
     <h1>{{ memberInfo }}</h1>
+    <button v-for='item in buyList' :key='item.userStatus' v-html='item.name' @click='btnClick(item)'></button>
+    <button @click='shareFunc'>分享升级</button>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import store from '../store'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      buyList:[
+        {userStatus:0,userLevel:'',name:"普通会员"},
+        {userStatus:1,userLevel:'',name:"vip会员"},
+        {userStatus:2,userLevel:'2',name:"vip2会员"}
+      ]
     }
   },
   computed:{
       ...mapGetters(['memberInfo'])
+  },
+  methods:{
+    btnClick:function(e){
+      store.dispatch('getMember',e).then((res)=>{
+       alert(res);
+      });
+    },
+    shareFunc:function(){
+      store.dispatch('share').then((res)=>{
+          alert(res);
+      })
+    }
   }
 }
 </script>
